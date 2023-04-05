@@ -1,0 +1,6 @@
+<h1>Account</h1>
+<p>Username: {{ user.username }}</p>
+<p>Email: {{ user.email }}</p>
+<!--logout button-->
+
+<input type="button" value="Logout" onclick="location.href='{% url 'logout' %}'" />
