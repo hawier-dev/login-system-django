@@ -1,5 +1,18 @@
+<h1>Login</h1>
+
 <form action="/login/" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Submit">
+    <p>Don't have an account? <a href="{% url 'register' %}">Sign up</a></p>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <p style="color: red;">{{ message }}</p>
+            {% else %}
+                <p>{{ message }}</p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <input type="hidden" value="{{ next }}" name="next">
+    <input type="submit" value="Sign in">
 </form>

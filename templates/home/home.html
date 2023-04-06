@@ -1,0 +1,24 @@
+<div>
+    <h1>Django login system</h1>
+
+<!--    Info messages -->
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <p style="color: red;">{{ message }}</p>
+            {& elif message.tags == 'success' %}
+                <p style="color: green;">{{ message }}</p>
+            {% else %}
+                <p>{{ message }}</p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% if user.is_authenticated %}
+        <p>You are logged in as {{ user.username }}.</p>
+        <p><a href="{% url 'logout' %}">Logout</a></p>
+    {% else %}
+        <p><a href="{% url 'login' %}">Login</a></p>
+        <p><a href="{% url 'register' %}">Sign up</a></p>
+    {% endif %}
+
+</div>
